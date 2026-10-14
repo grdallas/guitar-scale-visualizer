@@ -7,25 +7,27 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Scale Explorer">
 <title>Guitar Scale Visualizer</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
     /* ── Global ─────────────────────────────────────────────────────── */
     :root {
-        --paper: #f5f0e8;
-        --paper-dark: #ece4d0;
-        --ink: #1a1510;
-        --ink-light: #3d2e1e;
-        --ink-muted: #7a6a56;
-        --border: #c8b89a;
-        --amber: #c8841a;
+        --paper: #f1ead9;
+        --paper-dark: #e8dfca;
+        --ink: #171512;
+        --ink-light: #3a3226;
+        --ink-muted: #6e6656;
+        --border: #b3a68e;
+        --amber: #c4531c;
         --red: #8b2020;
         --blue: #1a3060;
-        --green: #1a5c2a;
+        --green: #3c6b4a;
+        --font-display: 'Big Shoulders Display', sans-serif;
+        --font-body: 'Work Sans', sans-serif;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; }
     body {
-        font-family: 'Libre Baskerville', serif;
+        font-family: var(--font-body);
         background: var(--paper);
         color: var(--ink);
         min-height: 100vh;
@@ -37,7 +39,7 @@
         margin: 0 auto;
         background:
             radial-gradient(ellipse at 80% 15%, rgba(26,48,96,0.06) 0%, transparent 50%),
-            radial-gradient(ellipse at 20% 85%, rgba(26,92,42,0.05) 0%, transparent 50%),
+            radial-gradient(ellipse at 20% 85%, rgba(60,107,74,0.05) 0%, transparent 50%),
             var(--paper);
         min-height: 100vh;
     }
@@ -46,13 +48,15 @@
         text-align: center;
         margin-bottom: 1.5rem;
         padding-bottom: 1rem;
-        border-bottom: 1px solid var(--border);
+        border-bottom: 3px solid var(--ink);
     }
     .tool-header h1 {
-        font-family: 'Playfair Display', serif;
-        font-size: 2rem;
+        font-family: var(--font-display);
+        font-size: 2.4rem;
         font-weight: 900;
-        letter-spacing: -0.01em;
+        text-transform: uppercase;
+        letter-spacing: 0.005em;
+        line-height: 0.95;
     }
     .tool-header p {
         font-size: 0.8rem;
@@ -63,7 +67,7 @@
 
     .card {
         border: 2px solid var(--ink);
-        border-radius: 4px;
+        border-radius: 0;
         padding: 1.2rem 1rem;
         margin-bottom: 1.2rem;
     }
@@ -72,10 +76,11 @@
 
     label.section-label {
         display: block;
-        font-size: 0.62rem;
+        font-size: 0.68rem;
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.15em;
-        color: var(--ink-muted);
+        letter-spacing: 0.12em;
+        color: var(--amber);
         margin-bottom: 0.5rem;
     }
 
@@ -89,8 +94,8 @@
         padding: 0.5rem 0.2rem;
         background: none;
         border: 1px solid var(--border);
-        border-radius: 3px;
-        font-family: 'Libre Baskerville', serif;
+        border-radius: 0;
+        font-family: var(--font-body);
         font-size: 0.8rem;
         color: var(--ink-light);
         cursor: pointer;
@@ -110,8 +115,8 @@
         padding: 0.55rem 0.6rem;
         background: var(--paper);
         border: 1px solid var(--border);
-        border-radius: 3px;
-        font-family: 'Libre Baskerville', serif;
+        border-radius: 0;
+        font-family: var(--font-body);
         font-size: 0.85rem;
         color: var(--ink);
     }
@@ -139,7 +144,7 @@
         height: 3px;
         -webkit-appearance: none;
         background: var(--border);
-        border-radius: 2px;
+        border-radius: 0;
         outline: none;
     }
     input[type="range"]::-webkit-slider-thumb {
@@ -179,15 +184,16 @@
     /* ── Scale title display ───────────────────────────────────────── */
     .scale-display {
         border: 2px solid var(--ink);
-        border-radius: 4px;
+        border-radius: 0;
         padding: 1.4rem 1rem;
         text-align: center;
         margin-bottom: 1.2rem;
     }
     .scale-title {
-        font-family: 'Playfair Display', serif;
-        font-size: 2.2rem;
-        font-weight: 700;
+        font-family: var(--font-display);
+        font-size: 2.6rem;
+        font-weight: 900;
+        letter-spacing: 0.005em;
         color: var(--ink);
         margin-bottom: 0.5rem;
     }
@@ -205,7 +211,7 @@
         padding-bottom: 0.2rem;
     }
     #fretboard { display: block; }
-    #fretboard text { font-family: 'Libre Baskerville', serif; }
+    #fretboard text { font-family: var(--font-body); }
 
     /* ── Legend ─────────────────────────────────────────────────────── */
     .legend {
@@ -682,6 +688,19 @@
     fretCountValEl.textContent = state.frets;
     render();
 </script>
-<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "b3be0e40b4e545519ebbff691359e051"}'></script><!-- End Cloudflare Web Analytics -->
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "b3be0e40b4e545519ebbff691359e051"}'>
+    (function () {
+        if (window.parent === window) return;
+        function reportHeight() {
+            window.parent.postMessage({ type: 'practiceLabToolHeight', height: document.documentElement.scrollHeight }, '*');
+        }
+        window.addEventListener('load', reportHeight);
+        window.addEventListener('resize', reportHeight);
+        document.addEventListener('click', () => setTimeout(reportHeight, 60));
+        document.addEventListener('change', () => setTimeout(reportHeight, 60));
+        setTimeout(reportHeight, 150);
+        setTimeout(reportHeight, 600);
+    })();
+</script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
